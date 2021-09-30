@@ -1,11 +1,11 @@
 FROM docker/compose
 
 # install python3.8
-RUN apk update && apk add py-pip python3-dev libffi-dev openssl-dev gcc libc-dev rust cargo make unzip
+RUN apk update && apk --no-cache add py-pip python3-dev libffi-dev openssl-dev gcc libc-dev rust cargo make unzip
 RUN /usr/bin/python3.8 -m pip install --upgrade pip
 
 # install pytest and plugins
-RUN pip3 install pytest requests pytest-docker
+RUN pip3 install --no-cache-dir pytest requests pytest-docker
 
 # install awscli2
 ENV GLIBC_VER=2.31-r0
@@ -30,6 +30,7 @@ RUN apk --no-cache add \
     && apk --no-cache del \
         binutils \
         curl \
+        unzip \
     && rm glibc-${GLIBC_VER}.apk \
     && rm glibc-bin-${GLIBC_VER}.apk \
     && rm -rf /var/cache/apk/*
