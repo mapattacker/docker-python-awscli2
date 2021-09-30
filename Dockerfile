@@ -5,7 +5,7 @@ RUN apk update && apk --no-cache add py-pip python3-dev libffi-dev openssl-dev g
 RUN /usr/bin/python3.8 -m pip install --upgrade pip
 
 # install pytest and plugins
-RUN pip3 install --no-cache-dir pytest requests pytest-docker
+RUN pip3 install --no-cache-dir pytest requests pytest-docker pytest-cov
 
 # install awscli2
 ENV GLIBC_VER=2.31-r0
