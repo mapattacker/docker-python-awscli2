@@ -1,5 +1,7 @@
 # dockercompose-py3-awscli2
 
+The aim of this Dockerfile is to build an image which allows a CI/CD pipeline to run python integration tests for Docker applications.
+
 This Dockerfile contains 
  - docker (with dind)
  - docker-compose
