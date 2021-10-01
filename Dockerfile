@@ -1,7 +1,7 @@
 FROM docker/compose
 
 # install python3.8
-RUN apk update && apk --no-cache add py-pip python3-dev libffi-dev openssl-dev gcc libc-dev rust cargo make unzip
+RUN apk update && apk --no-cache add py-pip python3-dev libffi-dev openssl-dev gcc libc-dev rust cargo make
 RUN /usr/bin/python3.8 -m pip install --upgrade pip
 
 # install pytest and plugins
@@ -12,6 +12,7 @@ ENV GLIBC_VER=2.31-r0
 RUN apk --no-cache add \
         binutils \
         curl \
+        unzip \
     && curl -sL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -o /etc/apk/keys/sgerrand.rsa.pub \
     && curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VER}/glibc-${GLIBC_VER}.apk \
     && curl -sLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VER}/glibc-bin-${GLIBC_VER}.apk \
